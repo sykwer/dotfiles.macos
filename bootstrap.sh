@@ -39,7 +39,7 @@ clone_or_update_repo() {
       return
     fi
 
-    if ! git --git-dir="$git_dir" diff --no-ext-diff --quiet --exit-code 2> /dev/null 2>&1; then
+    if ! git --git-dir="$git_dir" -C "$DOTFILES_PATH" diff --no-ext-diff --quiet --exit-code 2> /dev/null 2>&1; then
       echo 'Skip repo update. There are unstaged changes.'
       return
     fi
