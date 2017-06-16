@@ -62,6 +62,14 @@ clone_or_update_repo() {
   fi
 }
 
+install_homebrew() {
+  command -v 'brew' > /dev/null 2>&1 && return
+
+  echo 'Installing homebrew...'
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
+  echo 'done'
+}
+
 install_ansible() {
   command -v 'ansible' > /dev/null 2>&1 && return
 
@@ -76,6 +84,7 @@ install_ansible() {
 main() {
   print_header
   clone_or_update_repo
+  install_homebrew
   install_ansible
 }
 
