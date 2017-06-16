@@ -62,11 +62,21 @@ clone_or_update_repo() {
   fi
 }
 
+install_ansible() {
+  command -v 'ansible' > /dev/null 2>&1 && return
+
+  echo 'Installing ansible...'
+  brew install ansible
+  echo 'done'
+}
+
+
 #=== EntryPoint
 #====================================================================================================
 main() {
   print_header
   clone_or_update_repo
+  install_ansible
 }
 
 main
