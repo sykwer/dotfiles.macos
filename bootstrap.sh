@@ -57,7 +57,7 @@ clone_or_update_repo() {
     git clone --recursive https://github.com/sykwer/dotfiles.git --branch $DOTFILES_BRANCH $DOTFILES_PATH
     echo 'done'
   else
-    echo 'Stop cloning repo. You are supposed to use ~/dotfiles directory for manage dotfiles. Please make directory ~/dotfiles.'
+    echo 'Stop cloning repo. You are supposed to use ~/dotfiles directory for manage dotfiles, but the directory is already used.'
     exit 1
   fi
 }
