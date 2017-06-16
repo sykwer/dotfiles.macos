@@ -62,6 +62,15 @@ clone_or_update_repo() {
   fi
 }
 
+fix_permission() {
+  [ -d /usr/local ] || mkdir -p /usr/local
+  [ "$(stat -f '%Su' /usr/local)" = "$(whoami)" ] && return
+
+  echo 'Fixing permission of /usr/local...'
+  sudo chown -R $(whoami) /usr/local
+  echo 'done'
+}
+
 install_homebrew() {
   command -v 'brew' > /dev/null 2>&1 && return
 
@@ -84,6 +93,7 @@ install_ansible() {
 main() {
   print_header
   clone_or_update_repo
+  fix_permission
   install_homebrew
   install_ansible
 }
