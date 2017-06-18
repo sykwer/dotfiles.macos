@@ -87,6 +87,12 @@ install_ansible() {
   echo 'done'
 }
 
+provision() {
+  echo 'Provisioning...'
+  $DOTFILES_PATH/provisioning/run.sh
+  echo 'done'
+}
+
 
 #=== EntryPoint
 #====================================================================================================
@@ -96,6 +102,7 @@ main() {
   fix_permission
   install_homebrew
   install_ansible
+  provision
 }
 
 main
