@@ -79,6 +79,14 @@ install_homebrew() {
   echo 'done'
 }
 
+install_homebrew_cask() {
+  command -v 'brew cask' > /dev/null 2>&1 && return
+
+  echo 'Installing homebrew cask...'
+  brew tap caskroom/cask
+  echo 'done'
+}
+
 install_ansible() {
   command -v 'ansible' > /dev/null 2>&1 && return
 
@@ -101,6 +109,7 @@ main() {
   clone_or_update_repo
   fix_permission
   install_homebrew
+  install_homebrew_cask
   install_ansible
   provision
 }
