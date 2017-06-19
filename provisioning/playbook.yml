@@ -1,0 +1,6 @@
+- name: Development environment managed by sykwer
+  hosts: 127.0.0.1
+  connection: local
+
+  roles:
+    - vagrant

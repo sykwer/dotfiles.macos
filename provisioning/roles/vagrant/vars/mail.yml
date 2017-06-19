@@ -1,0 +1,7 @@
+vagrant:
+  boxes: {}
+
+  plugins:
+    - sahara
+    - dotenv
+    - vagrant-share
