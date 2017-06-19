@@ -1,6 +1,11 @@
 - set_fact:
     vagrant: {}
 
+- name: Install vagrant
+  homebrew_cask:
+    name: vagrant
+    state: present
+
 - name: get installed boxes
   command: vagrant box list
   register: installed_boxes
