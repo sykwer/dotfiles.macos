@@ -1,8 +1,0 @@
-vagrant:
-  boxes:
-    - centos7.2
-
-  plugins:
-    - sahara
-    - dotenv
-    - vagrant-share
