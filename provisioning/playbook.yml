@@ -17,6 +17,11 @@
     - role: symlink
       tags: ['basic', 'symlink']
 
+    #  lang
+    #-----------------------------------------------
+    - role: ruby
+      tags: ['lang', 'ruby']
+
     #  app
     #-----------------------------------------------
     - role: vim

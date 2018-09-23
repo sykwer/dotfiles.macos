@@ -1,0 +1,70 @@
+- set_fact:
+    ruby: {}
+
+- name: check rbenv
+  command: |
+    bash -lc 'which rbenv'
+  register: which_rbenv
+  ignore_errors: yes
+  changed_when: which_rbenv.rc > 0
+
+- name: install rbenv
+  command: |
+    bash -lc 'anyenv install rbenv'
+  when: which_rbenv.rc > 0
+
+- name: count directories num under plugin dir
+  shell:
+    find '{{ ruby.plugins_dir }}/' -maxdepth 1 -type d | wc -l | tr -d " \t\n\r"
+  register: installed_plugins_num_plus_one
+  changed_when: False
+
+- name: install plugins
+  git:
+    repo: 'https://github.com/{{ item }}.git'
+    dest: '{{ ruby.plugins_dir }}/{{ item }}'
+  with_items: '{{ ruby.plugins }}'
+  when: ruby.plugins|length|int > installed_plugins_num_plus_one.stdout|int - 1
+
+- name: get installed versions
+  command: |
+    bash -lc 'rbenv versions'
+  register: installed_versions
+  changed_when: False
+
+- name: install dependency
+  homebrew:
+    name:  '{{ item }}'
+    state: present
+  with_items:
+    - ruby-build
+    - openssl
+    - readline
+
+- name: get openssl dir
+  command: |
+    brew --prefix openssl
+  register: openssl_dir
+  changed_when: False
+
+- name: get readline dir
+  command: |
+    brew --prefix readline
+  register: readline_dir
+  changed_when: False
+
+- name: install ruby
+  command: |
+    bash -lc 'rbenv install {{ item | quote }}'
+  environment:
+    RUBY_CONFIGURE_OPTS: '--with-openssl-dir={{ openssl_dir.stdout | quote }} --with-readline-dir={{ readline_dir.stdout | quote }}'
+  when: |
+    ruby.versions and installed_versions.stdout.find(item) == -1
+  with_items: '{{ ruby.versions }}'
+  changed_when: False
+
+- name: set global ruby
+  command: |
+    bash -lc 'rbenv global {{ ruby.versions[0] | quote }}'
+  when: ruby.versions
+  changed_when: False # TODO: Need valid condition

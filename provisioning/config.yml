@@ -4,6 +4,7 @@ anyenv:
   envs_dir:    '{{ home_path }}/.anyenv/envs'
 
 symlink:
+  vim:                       .vim
   bash/.bash_profile:        .bash_profile
   bash/.bashrc:              .bashrc
   config/.ansible.cfg:       .ansible.cfg
@@ -11,6 +12,18 @@ symlink:
   config/.curlrc:            .curlrc
   config/.peco:              .peco
   config/git/.gitconfig:     .gitconfig
-  confing/git/.gitignore:    .gitignore
-  vim:                       .vim
+  config/git/.gitignore:     .gitignore
+  ruby/rbenv/default-gems:   .anyenv/envs/rbenv/default-gems
   vim/vimrc:                 .vimrc
+
+ruby:
+  versions:
+    - '2.5.0'
+    - '2.5.1'
+
+  plugins_dir: '{{ anyenv.envs_dir }}/rbenv/plugins'
+
+  plugins:
+    - ianheggie/rbenv-binstubs
+    - sstephenson/rbenv-default-gems
+    - sstephenson/rbenv-gem-rehash
