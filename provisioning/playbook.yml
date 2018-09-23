@@ -19,6 +19,8 @@
 
     #  lang
     #-----------------------------------------------
+    - role: python
+      tags: ['lang', 'python']
     - role: ruby
       tags: ['lang', 'ruby']
 

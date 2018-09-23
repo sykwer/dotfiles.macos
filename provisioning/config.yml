@@ -16,6 +16,10 @@ symlink:
   ruby/rbenv/default-gems:   .anyenv/envs/rbenv/default-gems
   vim/vimrc:                 .vimrc
 
+python:
+  versions:
+    - '3.7.0'
+
 ruby:
   versions:
     - '2.5.1'
