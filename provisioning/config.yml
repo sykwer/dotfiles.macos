@@ -9,3 +9,4 @@ symlink:
   config/.ansible.cfg:       .ansible.cfg
   config/.aws/config:        .aws/config
   config/.curlrc:            .curlrc
+  config/.peco:              .peco
