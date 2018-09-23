@@ -10,3 +10,4 @@ symlink:
   config/.aws/config:        .aws/config
   config/.curlrc:            .curlrc
   config/.peco:              .peco
+  config/git/.gitconfig:     .gitconfig
