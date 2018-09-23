@@ -3,3 +3,6 @@ anyenv:
   plugins_dir: '{{ home_path }}/.anyenv/plugins'
   envs_dir:    '{{ home_path }}/.anyenv/envs'
 
+symlink:
+  bash/.bash_profile:        .bash_profile
+  bash/.bashrc:              .bashrc

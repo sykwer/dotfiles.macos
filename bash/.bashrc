@@ -1,18 +1,9 @@
-alias dconsole='docker-compose run app bundle exec rails c'
-alias drspec='docker-compose run app bundle exec rspec'
-alias dmysql='docker-compose run app mysql -hdb -uroot -proot'
-alias dbash='docker-compose exec app bash'
-alias dup='rm ~/micoly-kizaru/tmp/pids/server.pid; docker-compose up -d'
-alias dstop='docker-compose stop'
-alias dbuild='docker-compose build'
-alias d='docker-compose run app'
+#  Aliases
+#-----------------------------------------------
 alias c='clear'
-alias m='cd ~/work/micoly/micoly-kizaru'
 alias gs='git status'
 alias gb='git branch'
 alias ga='git add -A'
 alias gc='git commit -m'
-alias gco='git checkout'
-alias b='bundle exec'
+alias ls='gls --color=auto'
 
-alias alias ls='gls --color=auto'
