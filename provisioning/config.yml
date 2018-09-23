@@ -6,3 +6,4 @@ anyenv:
 symlink:
   bash/.bash_profile:        .bash_profile
   bash/.bashrc:              .bashrc
+  config/.ansible.cfg:        .ansible.cfg

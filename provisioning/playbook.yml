@@ -15,5 +15,5 @@
     - role: anyenv
       tags: ['basic', 'anyenv']
     - role: symlink
-      tags: ['basic', 'link']
+      tags: ['basic', 'symlink']
 
