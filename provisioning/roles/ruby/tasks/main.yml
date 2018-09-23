@@ -61,7 +61,6 @@
   when: |
     ruby.versions and installed_versions.stdout.find(item) == -1
   with_items: '{{ ruby.versions }}'
-  changed_when: False
 
 - name: set global ruby
   command: |
