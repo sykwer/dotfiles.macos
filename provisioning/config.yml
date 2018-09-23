@@ -18,7 +18,6 @@ symlink:
 
 ruby:
   versions:
-    - '2.5.0'
     - '2.5.1'
 
   plugins_dir: '{{ anyenv.envs_dir }}/rbenv/plugins'
