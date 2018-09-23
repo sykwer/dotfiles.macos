@@ -11,3 +11,4 @@ symlink:
   config/.curlrc:            .curlrc
   config/.peco:              .peco
   config/git/.gitconfig:     .gitconfig
+  confing/git/.gitignore:    .gitignore

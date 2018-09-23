@@ -1,0 +1,10 @@
+.DS_Store
+Thumb.db
+*.log
+.tags
+.vimprojectroot
+vendor/bundle
+.bundle
+.envrc
+tmp/
+.idea/
