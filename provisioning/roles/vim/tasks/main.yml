@@ -2,4 +2,5 @@
   git:
     repo:   https://github.com/Shougo/dein.vim
     dest:   '{{ dotfiles_path }}/vim/dein/repos/github.com/Shougo/dein.vim'
-    update: False
+  register: git_result
+  changed_when: "git_result.after|default('after') != git_result.before|default('before')"
