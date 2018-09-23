@@ -1,139 +1,190 @@
+"=== Environment
+"==============================================================================================
+" encoding
+set encoding=utf-8
+scriptencoding utf-8
+
+" disable default plugins
+" https://lambdalisue.hatenablog.com/entry/2015/12/25/000046
+let g:loaded_gzip               = 1
+let g:loaded_tar                = 1
+let g:loaded_tarPlugin          = 1
+let g:loaded_zip                = 1
+let g:loaded_zipPlugin          = 1
+let g:loaded_rrhelper           = 1
+let g:loaded_2html_plugin       = 1
+let g:loaded_vimball            = 1
+let g:loaded_vimballPlugin      = 1
+let g:loaded_getscript          = 1
+let g:loaded_getscriptPlugin    = 1
+let g:loaded_netrw              = 1
+let g:loaded_netrwPlugin        = 1
+let g:loaded_netrwSettings      = 1
+let g:loaded_netrwFileHandlers  = 1
+let g:loaded_LogiPat            = 1
+let g:loaded_logipat            = 1
+let g:loaded_tutor_mode_plugin  = 1
+let g:loaded_man                = 1
+let g:did_install_default_menus = 1
+
+" runtime plugins
+let g:tex_flavor = 'latex'
+
+" g:env
+function! s:vimrc_environment()
+  let l:env = {}
+
+  let l:env.is_starting = has('vim_starting')
+  let l:env.is_gui = has('gui_running')
+
+  let l:env.hostname = substitute(hostname(), '[^\w.]', '', '')
+
+  let l:env.sid = matchstr(expand('<sfile>'), '<SNR>\zs\d\+\ze_vimrc_environment$')
+
+  let l:dotfiles_path = $HOME . '/dotfiles'
+  let l:vim_path = l:dotfiles_path . '/vim'
+
+  let l:env.path = {
+    \ 'dotfiles':       l:dotfiles_path,
+    \ 'dein':           l:vim_path . '/dein',
+    \ 'dein_repo':      l:vim_path . '/dein/repos/github.com/Shougo/dein.vim',
+    \ 'dein_toml':      l:vim_path . '/dein.toml',
+    \ 'dein_lazy_toml': l:vim_path . '/dein_lazy.toml',
+    \ 'vimrcd':         l:vim_path . '/vimrc.d',
+  \ }
+
+  let l:env.support = {
+    \ 'ag':        executable('ag'),
+    \ 'identify':  executable('identify'),
+    \ 'osascript': executable('osascript'),
+    \ 'autochdir': exists('+autochdir'),
+  \ }
+
+  return l:env
+endfunction
+
+let g:env = s:vimrc_environment()
+
+function! s:load_file(file)
+  let l:file = g:env.path.vimrcd . '/' . a:file . '.vim'
+
+  if filereadable(l:file)
+    execute 'source ' . l:file
+  else
+    echomsg 'file not readable:' l:file
+  endif
+endfunction
+
+" unregister autocmds
+" https://vim-jp.org/vimdoc-ja/autocmd.html#autocmd-intro
+augroup vimrc
+  autocmd!
+augroup END
+
+
+"=== Plugins
+"==============================================================================================
 if &compatible
   set nocompatible
 endif
 
-set runtimepath+=/Users/takapy/.vim/repos/github.com/Shougo/dein.vim
+if g:env.is_starting
+  let &g:rtp .= ',' . g:env.path.dein_repo
+endif
 
-call dein#begin('/Users/takapy/.vim/')
+let g:dein#_plugins = {}
 
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
+if dein#load_state(g:env.path.dein)
+  call dein#begin(g:env.path.dein, [expand('<sfile>'), g:env.path.dein_toml, g:env.path.dein_lazy_toml])
 
-" Add or remove your plugins here:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Yggdroot/indentLine') " :IndentLinesToggle toggles lines on and off.
-call dein#add('tpope/vim-endwise')   " Automate end like keyword typing
-"call dein#add('Townk/vim-autoclose')  " Close ' ) like symbol
-call dein#add('osyo-manga/vim-monster') " Rubyの補完プラグイン
-call dein#add('todesking/ruby_hl_lvar.vim') " Highlight local variable in ruby
-call dein#add('airblade/vim-gitgutter') " Shows git diffs
-call dein#add('itchyny/lightline.vim') " Light and configurable statusline/tabline for Vim
-call dein#add('bronson/vim-trailing-whitespace') " Trailing whitesspace detected by red color
-"call dein#add('tomtom/tcomment_vim') " Comment out efficiantly
-"call dein#add('othree/html5.vim')
-"call dein#add('hail2u/vim-css3-syntax')
-"call dein#add('hokaccha/vim-html5validator')
-"call dein#add('AtsushiM/sass-compile.vim')
-"call dein#add('kchmck/vim-coffee-script')
-"call dein#add('itmammoth/doorboy.vim') " Auto closing of blackets
-"call dein#add('digitaltoad/vim-pug')
-"call dein#add('vim-scripts/jQuery')
-"call dein#add('Shougo/neocomplete')  "コード補完機能
-call dein#add('pangloss/vim-javascript')  "vim-jsx depends on this
-call dein#add('mxw/vim-jsx')  "hilighting and indent support for jsx code
-"call dein#add('keith/swift.vim') "sintax highlight of swift code
-"call dein#add('Shougo/unite.vim') "filer
-"call dein#add('Shougo/vimfiler.vim') "uniteを全体にしたfiler
-call dein#add('scrooloose/nerdtree') "ディレクトリ表示
-call dein#add('udalov/kotlin-vim') "Kotlinのシンタックスハイライト
-call dein#add('rust-lang/rust.vim') "Rustのシンタックスハイライト
-call dein#add('cohama/lexima.vim') "クオーテーション補完
+  call dein#load_toml(g:env.path.dein_toml,      { 'lazy': 0 })
+  call dein#load_toml(g:env.path.dein_lazy_toml, { 'lazy': 1 })
 
-" You can specify revision/branch/tag.
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  call dein#end()
+  call dein#save_state()
+endif
 
-" Required:
-call dein#end()
+if dein#check_install()
+  call dein#install()
+endif
 
-" Required:
 filetype plugin indent on
 
-" Configure NERDTree
-let NERDTreeShowHidden=1
 
-" Configure aliases here
-:command Nt NERDTree
-:command Tind IndentLinesToggle
+"=== Load
+"==============================================================================================
+" call s:load_file('base/encoding')
+" call s:load_file('base/base')
+call s:load_file('base/appearance')
+" call s:load_file('base/tab_and_status')
+" call s:load_file('base/editing')
+" call s:load_file('base/utils')
 
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
+" call s:load_file('custom/auto_save')
+" call s:load_file('custom/last_closed_buffer')
+" call s:load_file('custom/project_dir')
+" call s:load_file('custom/text_objects')
+
+"if dein#tap('vim-textobj-multiblock')
+"  call s:load_file('plugin/vim-textobj-multiblock')
 "endif
-
-:syntax on
-
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set autoindent
-set autoread
-set smartindent
-set number
-set hlsearch
-set mouse=a
-set backspace=2
-set encoding=utf8
-set hlsearch
-set incsearch
-set wrapscan
-set noswapfile
-set ruler
-set showmatch
-set title
-set laststatus=2
-set clipboard=unnamed,autoselect
-set encoding=utf-8
-
-colorscheme molokai
-
-
-" Fortran!!!!!!!
-
-" Ensure correct syntax highlighting and auto-indentation for Fortran free-form
-" source code.
-let fortran_free_source=1
-let fortran_do_enddo=1
-filetype plugin indent on
-syntax on
-
-" Turn on line numbers and row/column numbers.
-set nu
-set ruler
-
-" Make vim echo commands as they are being entered.
-set showcmd
-
-" Set tabstops to two spaces and ensure tab characters are expanded into
-" spaces.
-set smarttab
-set expandtab
-set smartindent
-set autoindent
-set tabstop=2
-set shiftwidth=2
-
-" Fix backspace key.
-set bs=2
-
-" Set up searching so that it jumps to matches as the word is being entered and
-" is case-insensitive.
-set incsearch
-set ignorecase
-set smartcase
-
-" Uncomment the following lines to make
-" vim automatically create a backup copy
-" each time a file is edited.
-"
-" If you enable this feature, be sure to
-"
-"   mkdir ~/codeBackups
-"
-" or it won't work.
-"set backupdir=~/codeBackups
-"set backup
-
-" Fortran end!!!!!!!!!
+"if dein#tap('surround.vim')
+"  call s:load_file('plugin/surround')
+"endif
+"if dein#tap('vim-easy-align')
+"  call s:load_file('plugin/vim-easy-align')
+"endif
+"if dein#tap('emmet-vim')
+"  call s:load_file('plugin/emmet-vim')
+"endif
+"if dein#tap('operator-camelize.vim')
+"  call s:load_file('plugin/operator-camelize')
+"endif
+"if dein#tap('vim-operator-replace')
+"  call s:load_file('plugin/vim-operator-replace')
+"endif
+"if dein#tap('lexima.vim')
+"  call s:load_file('plugin/lexima')
+"endif
+"if dein#tap('switch.vim')
+"  call s:load_file('plugin/switch')
+"endif
+"if dein#tap('vim-textmanip')
+"  call s:load_file('plugin/vim-textmanip')
+"endif
+"if dein#tap('mold.vim')
+"  call s:load_file('plugin/mold')
+"endif
+"if dein#tap('deoplete.nvim')
+"  call s:load_file('plugin/deoplete')
+"endif
+"if dein#tap('vim-minisnip')
+"  call s:load_file('plugin/vim-minisnip')
+"endif
+"if dein#tap('nerdtree')
+"  call s:load_file('plugin/nerdtree')
+"endif
+"if dein#tap('denite.nvim')
+"  call s:load_file('plugin/denite')
+"endif
+"if dein#tap('vim-altr')
+"  call s:load_file('plugin/vim-altr')
+"endif
+"if dein#tap('vim-quickrun')
+"  call s:load_file('plugin/vim-quickrun')
+"endif
+"if dein#tap('neomake')
+"  call s:load_file('plugin/neomake')
+"endif
+"if dein#tap('vim-submode')
+"  call s:load_file('plugin/vim-submode')
+"endif
+"if dein#tap('vim-tags')
+"  call s:load_file('plugin/vim-tags')
+"endif
+"if dein#tap('vim-signature')
+"  call s:load_file('plugin/vim-signature')
+"endif
+"if dein#tap('vim-anzu')
+"  call s:load_file('plugin/vim-anzu')
+"endif

@@ -12,3 +12,5 @@ symlink:
   config/.peco:              .peco
   config/git/.gitconfig:     .gitconfig
   confing/git/.gitignore:    .gitignore
+  vim:                       .vim
+  vim/vimrc:                 .vimrc

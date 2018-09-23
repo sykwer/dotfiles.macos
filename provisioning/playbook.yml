@@ -17,3 +17,7 @@
     - role: symlink
       tags: ['basic', 'symlink']
 
+    #  app
+    #-----------------------------------------------
+    - role: vim
+      tags: ['app', 'vim']
