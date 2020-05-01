@@ -5,6 +5,7 @@ homebrew:
     - iterm2
     - scroll-reverser
     - slack
+    - zoomus
   packages:
     - anyenv          # All in one for **env
     - bash-git-prompt # Informative, fancy bash prompt for Git users
