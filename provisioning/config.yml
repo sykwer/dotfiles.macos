@@ -1,5 +1,7 @@
 homebrew:
   applications:
+    - clion
+    - intellij-idea
     - iterm2
     - scroll-reverser
     - slack
