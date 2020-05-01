@@ -1,20 +1,24 @@
-anyenv:
-  dir:         '{{ home_path }}/.anyenv'
-  plugins_dir: '{{ home_path }}/.anyenv/plugins'
-  envs_dir:    '{{ home_path }}/.anyenv/envs'
+homebrew:
+  applications:
+    - slack
+    - scroll-reverser
+  packages:
+    - anyenv          # All in one for **env
+    - bash-git-prompt # Informative, fancy bash prompt for Git users
 
 symlink:
-  vim:                       .vim
-  bash/.bash_profile:        .bash_profile
-  bash/.bashrc:              .bashrc
-  config/.ansible.cfg:       .ansible.cfg
-  config/.aws/config:        .aws/config
-  config/.curlrc:            .curlrc
-  config/.peco:              .peco
-  config/git/.gitconfig:     .gitconfig
-  config/git/.gitignore:     .gitignore
-  ruby/rbenv/default-gems:   .anyenv/envs/rbenv/default-gems
-  vim/vimrc:                 .vimrc
+  vim:                        .vim
+  bash/.bash_profile:         .bash_profile
+  bash/.bashrc:               .bashrc
+  bash/.git-prompt-colors.sh: .git-prompt-colors.sh # Custom configuration file for magicmonty/bash-git-prompt
+  config/.ansible.cfg:        .ansible.cfg
+  config/.aws/config:         .aws/config
+  config/.curlrc:             .curlrc
+  config/.peco:               .peco
+  config/git/.gitconfig:      .gitconfig
+  config/git/.gitignore:      .gitignore
+  ruby/rbenv/default-gems:    .anyenv/envs/rbenv/default-gems
+  vim/vimrc:                  .vimrc
 
 python:
   versions:
