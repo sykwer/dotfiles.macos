@@ -29,12 +29,11 @@ export ANYENV_DIR=$HOME/.anyenv
 # local
 export PATH=/usr/local/bin:$PATH
 
-# anyenv
-export PATH=$ANYENV_DIR/bin:$PATH
-
 # dotfiles
 export PATH=$DOTFILES_PATH/bin:$PATH
 
+# anyenv
+export PATH=$ANYENV_DIR/bin:$PATH
 
 # heroku
 # export PATH=$PATH:/usr/local/heroku/bin
@@ -43,13 +42,18 @@ export PATH=$DOTFILES_PATH/bin:$PATH
 #  Git
 #-----------------------------------------------
 export GIT_MERGE_AUTOEDIT='no'
-source /usr/local/git/contrib/completion/git-completion.bash
+
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 # eval $(gdircolors ~/settings/dircolors-solarized)
 
 
 # Command prompt
 #-----------------------------------------------
-source /usr/local/git/contrib/completion/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 export PS1='[\w$(__git_ps1 " (%s)")]\$ '
 
@@ -66,9 +70,7 @@ export DISABLE_SPRING=1
 
 #  Anyenv
 #-----------------------------------------------
-if [ -d $HOME/.anyenv ] && command -v 'anyenv' > /dev/null 2>&1; then
-  eval "$(anyenv init -)"
-fi
+eval "$(anyenv init -)"
 
 
 source ~/.bashrc
