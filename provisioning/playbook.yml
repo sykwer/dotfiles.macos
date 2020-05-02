@@ -9,13 +9,13 @@
   roles:
     #  basic
     #-----------------------------------------------
-    - role: anyenv
-      tags: ['basic', 'anyenv']
     - role: symlink
       tags: ['basic', 'symlink']
 
     #  lang
     #-----------------------------------------------
+    - role: anyenv
+      tags: ['basic', 'anyenv']
     - role: python
       tags: ['lang', 'python']
     - role: ruby
