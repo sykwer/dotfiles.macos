@@ -3,19 +3,19 @@
 
 - name: fetch anyenv repo
   git:
-    repo: https://github.com/riywo/anyenv
-    dest: '{{ anyenv.dir }}'
-  register: git_result
-  changed_when: "git_result.after|default('after') != git_result.before|default('before')"
+    repo:    https://github.com/anyenv/anyenv
+    version: riywo
+    dest:    '{{ anyenv.dir }}'
+  when: anyenv.dir
 
 - name: create plugins dir
   file:
     dest:  '{{ anyenv.plugins_dir }}'
     state: directory
+  when: anyenv.plugins_dir
 
 - name: fetch anyenv update repo
   git:
-    repo: https://github.com/znz/anyenv-update.git
+    repo: https://github.com/znz/anyenv-update
     dest: '{{ anyenv.plugins_dir }}/anyenv-update'
-  register: git_result
-  changed_when: "git_result.after|default('after') != git_result.before|default('before')"
+  when: anyenv.plugins_dir
