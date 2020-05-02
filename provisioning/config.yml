@@ -25,6 +25,11 @@ symlink:
   ruby/rbenv/default-gems:    .anyenv/envs/rbenv/default-gems
   vim/vimrc:                  .vimrc
 
+anyenv:
+  dir:        '{{ home_path }}/.anyenv'
+  plugins_dir: '{{ home_path}}/.anyenv/plugins'
+  envs_dir:   '{{ home_path }}/.anyenv/envs'
+
 python:
   versions:
     - '3.7.0'
