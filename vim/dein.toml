@@ -11,8 +11,8 @@ repo = 'Yggdroot/indentLine'
 [[plugins]]
 repo = 'tpope/vim-endwise'
 
-[[plugins]]
-repo = 'todesking/ruby_hl_lvar.vim'
+#[[plugins]]
+#repo = 'todesking/ruby_hl_lvar.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
