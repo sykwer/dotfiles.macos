@@ -10,18 +10,23 @@
     #  basic
     #-----------------------------------------------
     - role: symlink
-      tags: ['basic', 'symlink']
+      tags: ['basic', 'basic.symlink']
+
+    # install
+    #-----------------------------------------------
+    - role: homebrew
+      tags: ['install', 'install.homebrew']
 
     #  lang
     #-----------------------------------------------
     - role: anyenv
-      tags: ['basic', 'anyenv']
+      tags: ['lang', 'lang.anyenv']
     - role: python
-      tags: ['lang', 'python']
+      tags: ['lang', 'lang.python']
     - role: ruby
-      tags: ['lang', 'ruby']
+      tags: ['lang', 'lang.ruby']
 
     #  app
     #-----------------------------------------------
     - role: vim
-      tags: ['app', 'vim']
+      tags: ['app', 'app.vim']
