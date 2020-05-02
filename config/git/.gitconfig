@@ -3,7 +3,7 @@
 	email = sykwer@gmail.com
 
 [github]
-  user = creasty
+  user = sykwer
   privatekey = ~/.ssh/github_rsa
 
 [core]
