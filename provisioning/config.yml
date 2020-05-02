@@ -1,16 +1,25 @@
 homebrew:
   applications:
+    - adobe-acrobat-reader
     - clion
+    - eagle
+    - evernote
+    - google-backup-and-sync
+    - google-chrome
     - intellij-idea
     - iterm2
+    - kindle
     - scroll-reverser
     - slack
+    - sublime-text
+    - virtualbox
     - zoomus
   packages:
     - bash-git-prompt # Informative, fancy bash prompt for Git users
     - coreutils       # GNU File, Shell, and Text utilities
     - mingw-w64       # Minimalist GNU for Windows and GCC cross-compilers
     - qemu            # Emulator for x86 and PowerPC
+    - wget            # Internet file retriever
 
 symlink:
   vim:                        .vim
