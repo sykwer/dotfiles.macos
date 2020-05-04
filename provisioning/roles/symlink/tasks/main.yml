@@ -38,3 +38,13 @@
   loop_control:
     label: '{{ item.value }}'
   with_dict: '{{ symlink }}'
+
+- name: create system symlinks
+  file:
+    src: '{{ item.key  }}'
+    dest: '{{ item.value  }}'
+    state: link
+    force: yes
+  loop_control:
+    label: '{{ item.value  }}'
+  with_dict: '{{ system_symlink  }}'

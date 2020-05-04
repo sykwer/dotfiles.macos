@@ -36,6 +36,11 @@ symlink:
   ruby/rbenv/default-gems:    .anyenv/envs/rbenv/default-gems
   vim/vimrc:                  .vimrc
 
+system_symlink:
+  # Use GNU gcc
+  /usr/local/bin/gcc-9: /usr/local/bin/gcc
+  /usr/local/bin/g++-9: /usr/local/bin/g++
+
 anyenv:
   dir:        '{{ home_path }}/.anyenv'
   plugins_dir: '{{ home_path}}/.anyenv/plugins'

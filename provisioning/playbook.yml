@@ -7,15 +7,15 @@
     dotfiles_path: '{{ home_path }}/dotfiles'
 
   roles:
-    #  basic
-    #-----------------------------------------------
-    - role: symlink
-      tags: ['basic', 'basic.symlink']
-
     # install
     #-----------------------------------------------
     - role: homebrew
       tags: ['install', 'install.homebrew']
+
+    #  basic
+    #-----------------------------------------------
+    - role: symlink
+      tags: ['basic', 'basic.symlink']
 
     #  lang
     #-----------------------------------------------
