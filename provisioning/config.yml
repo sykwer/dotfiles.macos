@@ -17,6 +17,7 @@ homebrew:
   packages:
     - bash-git-prompt # Informative, fancy bash prompt for Git users
     - coreutils       # GNU File, Shell, and Text utilities
+    - gcc             # GNU compiler collection
     - mingw-w64       # Minimalist GNU for Windows and GCC cross-compilers
     - qemu            # Emulator for x86 and PowerPC
     - wget            # Internet file retriever
