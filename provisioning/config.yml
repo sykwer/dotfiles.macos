@@ -8,6 +8,7 @@ homebrew:
     - google-chrome
     - intellij-idea
     - iterm2
+    - karabiner-elements
     - kindle
     - scroll-reverser
     - slack
@@ -16,6 +17,7 @@ homebrew:
     - zoomus
   packages:
     - bash-git-prompt # Informative, fancy bash prompt for Git users
+    - cmake           # Cross-platform make
     - coreutils       # GNU File, Shell, and Text utilities
     - gcc             # GNU compiler collection
     - mingw-w64       # Minimalist GNU for Windows and GCC cross-compilers
