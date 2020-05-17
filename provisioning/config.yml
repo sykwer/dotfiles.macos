@@ -13,6 +13,7 @@ homebrew:
     - scroll-reverser
     - slack
     - sublime-text
+    - vagrant
     - virtualbox
     - zoomus
   packages:
@@ -62,3 +63,11 @@ ruby:
     - ianheggie/rbenv-binstubs
     - sstephenson/rbenv-default-gems
     - sstephenson/rbenv-gem-rehash
+
+vagrant:
+  boxes:
+    - ubuntu/xenial64 # Official Ubuntu 16.04 LTS (Xenial Xerus) builds
+    - ubuntu/bionic64 # Official Ubuntu 18.04 LTS (Bionic Beaver) builds
+
+  plugins:
+    - sahara

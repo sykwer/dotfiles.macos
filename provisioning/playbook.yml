@@ -28,5 +28,8 @@
 
     #  app
     #-----------------------------------------------
+    - role: vagrant
+      tags: ['app', 'app.vagrant']
+
     - role: vim
       tags: ['app', 'app.vim']
