@@ -29,6 +29,9 @@ export ANYENV_DIR=$HOME/.anyenv
 # local
 export PATH=/usr/local/bin:$PATH
 
+# sbin
+export PATH=/usr/local/sbin:$PATH
+
 # dotfiles
 export PATH=$DOTFILES_PATH/bin:$PATH
 
