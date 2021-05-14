@@ -6,25 +6,35 @@ homebrew:
     - evernote
     - google-backup-and-sync
     - google-chrome
+    - xquartz # Need for installing gtkwave (must be placed before gtkwave)
+    - gtkwave # Perl's Switch module must be installed. See ughe.github.io/2018/11/06/gtkwave-osx
     - intellij-idea
     - iterm2
     - karabiner-elements
     - kindle
     - scroll-reverser
     - slack
+    - soundflower
     - sublime-text
     - vagrant
     - virtualbox
+    - wireshark
     - zoomus
   packages:
+    - arping          # Utility to check whether MAC addresses are already taken on a LAN
     - bash-git-prompt # Informative, fancy bash prompt for Git users
     - cmake           # Cross-platform make
     - coreutils       # GNU File, Shell, and Text utilities
     - dosfstools      # Tools to create, check and label file systems of the FAT family
     - gcc             # GNU compiler collection
+    - graphviz        # Graph visualization software from AT&T and Bell Labs
     - gptfdisk        # Text-mode partitioning tools
+    - icarus-verilog  # Verilog simulation and synthesis tool
+    - iproute2mac     # CLI wrapper for basic network utilities on macOS - ip command
+    - llvm            # Next-gen compiler infrastructure
     - mingw-w64       # Minimalist GNU for Windows and GCC cross-compilers
     - qemu            # Emulator for x86 and PowerPC
+    - socat           # SOcket CAT: netcat on steroids
     - wget            # Internet file retriever
 
 symlink:
