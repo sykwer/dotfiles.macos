@@ -7,7 +7,7 @@
   privatekey = ~/.ssh/github_rsa
 
 [core]
-  editor       = /usr/local/bin/vim
+  editor = vim
   excludesfile = ~/.gitignore
 
 [color]
