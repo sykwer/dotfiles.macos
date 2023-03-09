@@ -25,15 +25,19 @@ homebrew:
     - bash-git-prompt # Informative, fancy bash prompt for Git users
     - cmake           # Cross-platform make
     - coreutils       # GNU File, Shell, and Text utilities
+    - ctags           # Reimplementation of ctags(1)
     - dosfstools      # Tools to create, check and label file systems of the FAT family
     - gcc             # GNU compiler collection
     - graphviz        # Graph visualization software from AT&T and Bell Labs
     - gptfdisk        # Text-mode partitioning tools
     - icarus-verilog  # Verilog simulation and synthesis tool
+    - iperf           # Tool to measure maximum TCP and UDP bandwidth
     - iproute2mac     # CLI wrapper for basic network utilities on macOS - ip command
     - llvm            # Next-gen compiler infrastructure
     - mingw-w64       # Minimalist GNU for Windows and GCC cross-compilers
+    - mysql           # Open source relational database management system
     - qemu            # Emulator for x86 and PowerPC
+    - redis           # Persistent key-value database, with built-in net interface
     - socat           # SOcket CAT: netcat on steroids
     - wget            # Internet file retriever
 
@@ -83,3 +87,4 @@ vagrant:
 
   plugins:
     - sahara
+    - vagrant-vbguest
